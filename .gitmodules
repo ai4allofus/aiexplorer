@@ -1,0 +1,4 @@
+[submodule "tools/promptedit"]
+	path = tools/promptedit
+	url = https://github.com/Sing-Li/golem
+	branch = mlcai_query_client

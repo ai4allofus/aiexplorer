@@ -1,0 +1,8 @@
+services:
+  promptedit:
+    image: aicrazyguy/promptedit:v0.1a 
+    container_name: golem
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+

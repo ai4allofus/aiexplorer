@@ -1,18 +1,20 @@
 services:
   llms:
-    image: aicrazyguy/ai4allofus:86cuda124
+    image: aicrazyguy/ai4allofus:86rocm57
     container_name: llmserver
     restart: unless-stopped
     ports:
       - "8000:8000"
     volumes:
-      - "./cache:/root/cache"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              capabilities: [gpu]
+      - "./cache:/root/.cache"
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/kfd:/dev/kfd
+    security_opt:
+      - "seccomp=unconfined"
+    group_add:
+      - video
+
   promptedit:
     image: aicrazyguy/promptedit:v0.1
     container_name: golem
